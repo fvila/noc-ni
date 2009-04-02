@@ -1,0 +1,27 @@
+# Current time Sun Mar 22 19:32:21 2009
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.1e"
+# Version = "2006.03"
+# Date = "Mar  8 2006"
+# Platform = linux
+# 0    0x0821af6f: 'Tcl_AddObjErrorInfo + 0x37' in '/opt/modeltech/bin/../linux/vish'
+# 1    0x0821af2e: 'Tcl_AddErrorInfo + 0x1a' in '/opt/modeltech/bin/../linux/vish'
+# 2    0x08238c95: 'Tcl_BackgroundError + 0x25' in '/opt/modeltech/bin/../linux/vish'
+# 3    0xb7b45f77: '<unknown (@0xb7b45f77)>'
+# 4    0xb7b46133: '<unknown (@0xb7b46133)>'
+# 5    0xb7ab0572: 'Nlview_DirectAPI + 0x197a' in '/opt/modeltech/linux/nlviewST.so'
+# 6    0xb7aaa307: '<unknown (@0xb7aaa307)>'
+# 7    0xb7b45b5d: '<unknown (@0xb7b45b5d)>'
+# 8    0x081909d6: 'Tk_HandleEvent + 0x6ee' in '/opt/modeltech/bin/../linux/vish'
+# 9    0x08190e77: 'TkQueueEventForAllChildren + 0xd3' in '/opt/modeltech/bin/../linux/vish'
+# 10   0x0825c780: 'Tcl_ServiceEvent + 0x7c' in '/opt/modeltech/bin/../linux/vish'
+# 11   0x0825cabc: 'Tcl_DoOneEvent + 0x18c' in '/opt/modeltech/bin/../linux/vish'
+# 12   0x08190ef9: 'Tk_MainLoop + 0x19' in '/opt/modeltech/bin/../linux/vish'
+# 13   0x08197c1b: 'Tk_MainEx + 0x387' in '/opt/modeltech/bin/../linux/vish'
+# 14   0x080c835d: 'vish_inner_loop + 0xf9' in '/opt/modeltech/bin/../linux/vish'
+# 15   0x080c9a40: 'main + 0xd6c' in '/opt/modeltech/bin/../linux/vish'
+# 16   0x002116e0: '_libc_start_main + 0xe0' in '/lib/libc.so.6'
+# 17   0x080815fc: 'start + 0x1c' in '/opt/modeltech/bin/../linux/vish'
+# End of Stack Trace
+
