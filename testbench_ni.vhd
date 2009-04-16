@@ -45,7 +45,6 @@ architecture behav of testbench_ni is
 	signal net_in : net_ni_in_type;
 	signal net_out : net_ni_out_type;
 	signal ack : std_logic;
-	signal ready : std_logic;
 
 	component ni is
 		generic (
@@ -65,6 +64,29 @@ architecture behav of testbench_ni is
 		);
 	end component;
 
+    component port_buffer is
+
+        port (
+            clk   	: in std_logic;
+            rstn		: in std_logic;
+            idata 	: in std_logic_vector(7 downto 0);
+            av_in		: in std_logic; -- next buffer available
+            val_in	: in std_logic; -- previous buffer valid
+            
+            odata 	: out std_logic_vector(7 downto 0);
+            av_out	: out std_logic; -- available for write
+            val_out	: out std_logic	-- valid contents
+        );
+
+    end component port_buffer;
+
+	signal av_in : std_logic;
+	signal val_in : std_logic;
+	signal av_out : std_logic;
+	signal val_out : std_logic;
+	signal odata : std_logic_vector(7 downto 0);
+	signal idata : std_logic_vector(7 downto 0);
+
 begin
 
 	i1: ni
@@ -73,6 +95,16 @@ begin
 			SRC_ADDR => x"ABCD")
 		port map (resetn, clk, master_in, master_out, slave_in, slave_out,
 				net_in, net_out, ack);
+
+	-- Out buffer
+    i2: port_buffer
+        port map (clk, resetn, net_out.packet_out, av_in, net_out.rcon,
+        		odata, net_in.rok, val_out);
+
+	-- In buffer
+    i3: port_buffer
+        port map (clk, resetn, idata, net_out.nok, val_in, net_in.packet_in,
+        		av_out, net_in.ncon);
 
 	process
 	begin
@@ -87,7 +119,8 @@ begin
 
 		resetn <= '0';
 		ack <= '0';
-		net_in.rok <= '1';
+		av_in <= '1';
+	--	net_in.rok <= '1';
 		wait for 3 ns;
 		resetn <= '1';
 
@@ -100,11 +133,11 @@ begin
 
 		wait for 40 ns;
 
-		net_in.rok <= '0';
+--		net_in.rok <= '0';
 
-		wait for 40 ns;
+--		wait for 40 ns;
 
-		net_in.rok <= '1';
+--		net_in.rok <= '1';
 
 		wait for 600 ns;
 

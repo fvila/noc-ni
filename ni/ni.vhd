@@ -26,7 +26,6 @@ entity ni is
 		net_in		: in  net_ni_in_type;
 		net_out		: out net_ni_out_type;
 		ack			: in  std_logic			-- For debug purposes
---		ready		: in  std_logic			-- For debug purposes
 	);
 end;
 
@@ -88,7 +87,7 @@ architecture behavioural of ni is
 	signal start_flit : std_logic;
 	signal flit_out	: std_logic_vector(7 downto 0);
 	signal flit_done : std_logic;
---	signal ready : std_logic;
+
 begin
     tg0: type_gen
         port map (
@@ -143,13 +142,4 @@ begin
     slave_out.hconfig(7) <= x"00000000";
     slave_out.hindex <= NSLV;
 
-    master_out.hconfig(0) <= VENDOR & DEVICE_ID & "00" & VERSION & IRQ;
-    master_out.hconfig(1) <= x"00000000";
-    master_out.hconfig(2) <= x"00000000";
-    master_out.hconfig(3) <= x"00000000";
-    master_out.hconfig(4) <= x"00000000";
-    master_out.hconfig(5) <= x"00000000";
-    master_out.hconfig(6) <= x"00000000";
-    master_out.hconfig(7) <= x"00000000";
-    master_out.hindex <= NMST;
 end;
