@@ -5,6 +5,7 @@ add wave -noupdate -format Logic /testbench_ni/clk
 add wave -noupdate -divider <NULL>
 add wave -noupdate -format Literal /testbench_ni/odata
 add wave -noupdate -format Logic /testbench_ni/av_in
+add wave -noupdate -format Logic /testbench_ni/av_in
 add wave -noupdate -divider <NULL>
 add wave -noupdate -format Literal -expand /testbench_ni/net_out
 TreeUpdate [SetDefaultTree]

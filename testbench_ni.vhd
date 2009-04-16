@@ -133,11 +133,11 @@ begin
 
 		wait for 40 ns;
 
---		net_in.rok <= '0';
+		av_in <= '0';
 
---		wait for 40 ns;
+		wait for 40 ns;
 
---		net_in.rok <= '1';
+		av_in <= '1';
 
 		wait for 600 ns;
 
