@@ -32,6 +32,7 @@ begin
 		elsif clk'event and clk = '1' then
 			if fstart = 0 and fend = 0 then
 				-- We aren't initialized
+                ncon <= '0';
 				null;
 			else
 				if ready = '1' then
@@ -44,7 +45,8 @@ begin
 						if fend = 0 then
 							flit_out <= FLIT_END & pkt(fstart downto fend);
 							done <= '1';
-                            ncon <= '0';
+                            fstart <= 0;
+                            fend <= 0;
 						else
 							flit_out <= FLIT_MIDDLE & pkt(fstart downto fend);
 							fstart <= fstart - 6;
